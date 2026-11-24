@@ -1842,32 +1842,6 @@
       showToast('Restored default Shiva & Parvati illustration.');
     }
 
-    function openCustomizeModal() {
-      document.getElementById('customizeModal').classList.remove('hidden');
-    }
-
-    function closeCustomizeModal() {
-      document.getElementById('customizeModal').classList.add('hidden');
-    }
-
-    function exportCustomizedHtml() {
-      closeCustomizeModal();
-      const docClone = document.documentElement.cloneNode(true);
-      const modalClone = docClone.querySelector('#customizeModal');
-      if (modalClone) modalClone.classList.add('hidden');
-      const fullHtml = '<!DOCTYPE html>\n' + docClone.outerHTML;
-      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'index.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast('Exported ready-to-host index.html!');
-    }
-
     // 7. Copy Link & Toast
     function copyInviteLink() {
       const shareUrl = window.location.href.split('#')[0];
